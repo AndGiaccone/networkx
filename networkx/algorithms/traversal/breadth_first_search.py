@@ -61,6 +61,7 @@ def generic_bfs_edges(G, source, neighbors=None, depth_limit=None):
     visited = {source}
     if depth_limit is None:
         depth_limit = len(G)
+        print("Sto visitando il nodo ",source)
     queue = deque([(source, depth_limit, neighbors(source))])
     while queue:
         parent, depth_now, children = queue[0]
@@ -69,6 +70,7 @@ def generic_bfs_edges(G, source, neighbors=None, depth_limit=None):
             if child not in visited:
                 yield parent, child
                 visited.add(child)
+                print("Sto visitando il nodo ",child)
                 if depth_now > 1:
                     queue.append((child, depth_now - 1, neighbors(child)))
         except StopIteration:
